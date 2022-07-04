@@ -1,13 +1,30 @@
+import React from "react";
 import Card from "./components/Card";
 import Header from "./components/Header";
 import Drawer from "./components/Drawer";
 
 function App() {
+    const [items, setItems] = React.useState([]);
+    const [cartItems, setCartItems] = React.useState([]);
+    const [cartOpened, setCartOpened] = React.useState(false);
+
+    React.useEffect(() => {
+        fetch("https://62c30de5ff594c65676cd37e.mockapi.io/items").then((response) => {
+            return response.json();
+        }).then((json) => {
+            setItems(json);
+        })
+    })
+
     return (
         <div className="wrapper clear">
-            <Drawer />
-            <Header />
-
+            {cartOpened ? (
+                <Drawer
+                    items={cartItems}
+                    onClose={() => setCartOpened(false)}
+                />
+            ) : null}
+            <Header onClickCart={() => setCartOpened(true)} />
             <div className="content p-40">
                 <div className="d-flex align-center mb-40 justify-between">
                     <h1>All vinyls</h1>
@@ -21,8 +38,16 @@ function App() {
                         <input placeholder="Search..." />
                     </div>
                 </div>
-                <div className="d-flex ">
-                    <Card />
+                <div className="d-flex flex-wrap">
+                    {items.map((obj) => (
+                        <Card
+                            title={obj.title}
+                            price={obj.price}
+                            imageUrl={obj.imageUrl}
+                            onFavorite={() => console.log(obj)}
+                            onPlus={() => console.log(obj)}
+                        />
+                    ))}
                 </div>
             </div>
         </div>
