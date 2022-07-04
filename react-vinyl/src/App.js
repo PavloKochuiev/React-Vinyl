@@ -16,6 +16,10 @@ function App() {
         })
     })
 
+    const onAddToCart = (obj) => {
+        alert(obj)
+    }
+
     return (
         <div className="wrapper clear">
             {cartOpened ? (
@@ -39,13 +43,13 @@ function App() {
                     </div>
                 </div>
                 <div className="d-flex flex-wrap">
-                    {items.map((obj) => (
+                    {items.map((item) => (
                         <Card
-                            title={obj.title}
-                            price={obj.price}
-                            imageUrl={obj.imageUrl}
-                            onFavorite={() => console.log(obj)}
-                            onPlus={() => console.log(obj)}
+                            title={item.title}
+                            price={item.price}
+                            imageUrl={item.imageUrl}
+                            onFavorite={() => console.log(item)}
+                            onPlus={(obj) => onAddToCart(obj)}
                         />
                     ))}
                 </div>
