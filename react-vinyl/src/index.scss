@@ -40,6 +40,7 @@ header {
     border: 1px solid #f3f3f3;
     border-radius: 10px;
     padding: 0 15px;
+    position: relative;
 
     input {
         border: 0;
@@ -47,10 +48,16 @@ header {
         font-size: 16px;
         width: 200px;
     }
+
+    .clear {
+        position: absolute;
+        right: 0;
+        margin-right: 10px;
+    }
 }
 
 .overlay {
-    position: absolute;
+    position: fixed;
     left: 0;
     top: 0;
     width: 100%;
@@ -81,6 +88,10 @@ header {
         margin-bottom: 40px;
     }
 
+    .overflow {
+        overflow: auto;
+    }
+
     .cartTotalBlock {
         ul {
             display: block;
@@ -109,7 +120,7 @@ header {
         img {
             position: absolute;
             right: 30px;
-            top: 20px
+            top: 20px;
         }
     }
 }
