@@ -23,7 +23,7 @@ function Drawer({onClose, onRemove, items = []}) {
                                             width={80}
                                             height={80}
                                             src={obj.imageUrl}
-                                            alt="blaze-dancehall"
+                                            alt={obj.title}
                                         ></img>
                                         <div className="mr-20">
                                             <p className="mb-5">{obj.title}</p>
@@ -71,7 +71,7 @@ function Drawer({onClose, onRemove, items = []}) {
                             <p className="opacity-6">
                                 Add at least one vinyl to order
                             </p>
-                            <button className="greenButton">Return back</button>
+                            <button onClick={onClose} className="greenButton">Return back</button>
                         </div>
                     )}
                 </div>
