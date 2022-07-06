@@ -14,26 +14,33 @@ function App() {
     const [favoriteItems, setFavoriteItems] = React.useState([]);
 
     React.useEffect(() => {
-        axios
-            .get("https://62c30de5ff594c65676cd37e.mockapi.io/items")
-            .then((response) => {
-                setItems(response.data);
-            });
-        axios
-            .get("https://62c30de5ff594c65676cd37e.mockapi.io/cart")
-            .then((response) => {
-                setCartItems(response.data);
-            });
-        axios
-            .get("https://62c30de5ff594c65676cd37e.mockapi.io/favorite")
-            .then((response) => {
-                setFavoriteItems(response.data);
-            });
-    });
+        async function fetchData(response) {
+            const cartResponse = await axios.get(
+                "https://62c30de5ff594c65676cd37e.mockapi.io/cart"
+            );
+            const favoriteItemsResponse = await axios.get(
+                "https://62c30de5ff594c65676cd37e.mockapi.io/favorite"
+            );
+            const itemsResponse = await axios.get(
+                "https://62c30de5ff594c65676cd37e.mockapi.io/items"
+            );
+
+            setCartItems(cartResponse.data);
+            setFavoriteItems(favoriteItemsResponse.data);
+            setItems(itemsResponse.data);
+        }
+
+        fetchData();
+    }, []);
 
     const onAddToCart = (obj) => {
-        if (cartItems.find((item) => item.id === obj.id)) {
-            setCartItems((prev) => prev.filter((item) => item.id !== obj.id));
+        if (cartItems.find((item) => Number(item.id) === Number(obj.id))) {
+            axios.delete(
+                `https://62c30de5ff594c65676cd37e.mockapi.io/cart/${obj.id}`
+            );
+            setCartItems((prev) =>
+                prev.filter((item) => Number(item.id) !== Number(obj.id))
+            );
         } else {
             axios.post("https://62c30de5ff594c65676cd37e.mockapi.io/cart", obj);
             setCartItems((prev) => [...prev, obj]);
@@ -64,7 +71,7 @@ function App() {
                 setFavoriteItems((prev) => [...prev, data]);
             }
         } catch (error) {
-            alert("Can't add to favorites");
+            console.error("Can't add to favorites");
         }
     };
 
@@ -82,6 +89,7 @@ function App() {
             <Route path="/" exact>
                 <Home
                     items={items}
+                    cartItems={cartItems}
                     searchValue={searchValue}
                     setSearchValue={setSearchValue}
                     onChangeSearchInput={onChangeSearchInput}
