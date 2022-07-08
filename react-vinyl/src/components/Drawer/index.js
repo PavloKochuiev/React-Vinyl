@@ -1,12 +1,15 @@
 import React from "react";
-import AppContext from "../context";
-import Info from "./Info";
 import axios from "axios";
+
+import Info from "../Info";
+import { useCart } from "../../hooks/useCart";
+
+import styles from "./Drawer.module.scss"
 
 const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
-function Drawer({ onClose, onRemove, items = [] }) {
-    const { cartItems, setCartItems } = React.useContext(AppContext);
+function Drawer({ onClose, onRemove, items = [], opened }) {
+    const { cartItems, setCartItems, totalPrice } = useCart();
     const [orderId, setOrderId] = React.useState(null);
     const [isOrderComplete, setIsOrderComplete] = React.useState(false);
     const [isLoading, setIsLoading] = React.useState(false);
@@ -17,7 +20,7 @@ function Drawer({ onClose, onRemove, items = [] }) {
             const { data } = await axios.post(`https://62c30de5ff594c65676cd37e.mockapi.io/orders`, {
                 items: cartItems,
             });
-            
+
             setOrderId(data.id);
             setIsOrderComplete(true);
             setCartItems([]);
@@ -34,8 +37,8 @@ function Drawer({ onClose, onRemove, items = [] }) {
     };
 
     return (
-        <div className="overlay">
-            <div className="drawer">
+        <div className={`${styles.overlay} ${opened ? styles.overlayVisible : ""}`}>
+            <div className={styles.drawer}>
                 <div className="overflow">
                     <h2 className="d-flex justify-between mb-30">
                         Cart
@@ -68,12 +71,12 @@ function Drawer({ onClose, onRemove, items = [] }) {
                                 ))}
                             </div>
 
-                            <div className="cartTotalBlock">
+                            <div className={styles.cartTotalBlock}>
                                 <ul>
                                     <li className="d-flex">
                                         <span>Total:</span>
                                         <div></div>
-                                        <b>60$</b>
+                                        <b>{totalPrice}$</b>
                                     </li>
                                     <li className="d-flex">
                                         <span>Shipping:</span>
