@@ -48,26 +48,4 @@
     .overflow {
         overflow: auto;
     }
-
-    .cartTotalBlock {
-        ul {
-            display: block;
-            margin-bottom: 40px !important;
-
-            li {
-                display: flex;
-                align-items: flex-end;
-                margin-bottom: 20px;
-
-                div {
-                    flex: 1;
-                    height: 1px;
-                    border-bottom: 1px dashed #dfdfdf;
-                    position: relative;
-                    top: -4px;
-                    margin: 0 10px;
-                }
-            }
-        }
-    }
 }

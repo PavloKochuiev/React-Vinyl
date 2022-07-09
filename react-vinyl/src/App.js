@@ -3,9 +3,10 @@ import Header from "./components/Header";
 import axios from "axios";
 import Drawer from "./components/Drawer";
 import { Route } from "react-router-dom";
+import AppContext from "./context";
+
 import Home from "./pages/Home";
 import Favorites from "./pages/Favorites";
-import AppContext from "./context";
 import Orders from "./pages/Orders";
 
 function App() {
@@ -38,8 +39,8 @@ function App() {
     }, []);
 
     const onAddToCart = async (obj) => {
-        const findItem = cartItems.find((item) => Number(item.parentId) === Number(obj.id));
         try {
+            const findItem = cartItems.find((item) => Number(item.parentId) === Number(obj.id));
             if (findItem) {
                 setCartItems((prev) => prev.filter((item) => Number(item.parentId) !== Number(obj.id)));
                 await axios.delete(`https://62c30de5ff594c65676cd37e.mockapi.io/cart/${findItem.id}`);
@@ -111,14 +112,12 @@ function App() {
             }}
         >
             <div className="wrapper clear">
-                <div>
-                    <Drawer
-                        items={cartItems}
-                        onClose={() => setCartOpened(false)}
-                        onRemove={onRemoveItem}
-                        opened={cartOpened}
-                    />
-                </div>
+                <Drawer
+                    items={cartItems}
+                    onClose={() => setCartOpened(false)}
+                    onRemove={onRemoveItem}
+                    opened={cartOpened}
+                />
 
                 <Header onClickCart={() => setCartOpened(true)} />
 

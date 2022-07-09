@@ -1,22 +1,24 @@
 import axios from "axios";
 import React from "react";
+
 import Card from "../components/Card";
 
 function Orders() {
     const [orders, setOrders] = React.useState([]);
     const [isLoading, setIsLoading] = React.useState(true);
 
-    React.useEffect(() => {
-        (async () => {
-            try {
-                const { data } = await axios.get(`https://62c30de5ff594c65676cd37e.mockapi.io/orders`);
-                setOrders(data.reduce((prev, obj) => [...prev, ...obj.items], []));
-                setIsLoading(false);
-            } catch (error) {
-                console.log(error);
-            }
-        })();
-    }, []);
+  React.useEffect(() => {
+      (async () => {
+          try {
+              const { data } = await axios.get("https://62c30de5ff594c65676cd37e.mockapi.io/orders");
+              setOrders(data.reduce((prev, obj) => [...prev, ...obj.items], []));
+              setIsLoading(false);
+          } catch (error) {
+              alert("Ошибка при запросе заказов");
+              console.error(error);
+          }
+      })();
+  }, []);
 
     return (
         <div className="content p-40">

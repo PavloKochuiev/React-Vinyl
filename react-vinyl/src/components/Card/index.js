@@ -7,10 +7,10 @@ import styles from "./Card.module.scss";
 
 function Card({
     id,
-    price,
-    imageUrl,
-    onFavorite,
     title,
+    imageUrl,
+    price,
+    onFavorite,
     onPlus,
     favorited = false,
     loading = false,
@@ -48,7 +48,6 @@ function Card({
                 </ContentLoader>
             ) : (
                 <>
-                    {" "}
                     {onFavorite && (
                         <div className={styles.favorite} onClick={onClickFavorite}>
                             <img
@@ -70,7 +69,7 @@ function Card({
                                 onClick={onClickPlus}
                                 src={isItemAdded(id) ? "/img/btn-checked.svg" : "/img/plus.svg"}
                                 alt="add"
-                            ></img>
+                            />
                         )}
                     </div>
                 </>
