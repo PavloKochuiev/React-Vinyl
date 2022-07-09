@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/React-Vinyl/static/css/main.dbd92a8e.css",
+    "main.js": "/React-Vinyl/static/js/main.855a818a.js",
+    "index.html": "/React-Vinyl/index.html",
+    "main.dbd92a8e.css.map": "/React-Vinyl/static/css/main.dbd92a8e.css.map",
+    "main.855a818a.js.map": "/React-Vinyl/static/js/main.855a818a.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.dbd92a8e.css",
+    "static/js/main.855a818a.js"
+  ]
+}
