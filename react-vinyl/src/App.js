@@ -8,6 +8,9 @@ import AppContext from "./context";
 import Home from "./pages/Home";
 import Favorites from "./pages/Favorites";
 import Orders from "./pages/Orders";
+import Delivery from "./pages/Delivery";
+import About from "./pages/About";
+
 
 function App() {
     const [items, setItems] = React.useState([]);
@@ -132,6 +135,14 @@ function App() {
                         onAddToCart={onAddToCart}
                         isLoading={isLoading}
                     />
+                </Route>
+
+                <Route path="/delivery" exact>
+                    <Delivery />
+                </Route>
+
+                <Route path="/about" exact>
+                    <About />
                 </Route>
 
                 <Route path="/favorites" exact>

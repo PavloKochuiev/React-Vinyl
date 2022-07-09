@@ -18,28 +18,51 @@ function Header(props) {
                 </div>
             </Link>
 
-            <ul className="d-flex">
-                <li onClick={props.onClickCart} className="mr-30 cu-p positioned">
-                    <img width={24} height={24} src="/img/shopping-cart.png" alt="cart" />
-                    <span className="totalPrice">{totalPrice}$</span>
-                </li>
-                <li className="ml-20">
-                    <Link to="/favorites">
-                        <img
-                            className="mr-15 cu-p"
-                            width={24}
-                            height={24}
-                            src="/img/favorite.png"
-                            alt="favorite"
-                        />
+            <div className="d-flex">
+                <ul className="d-flex">
+                    <Link to="/delivery">
+                        <li className="mr-30 cu-p ">
+                            <p>Delivery</p>
+                        </li>
                     </Link>
-                </li>
-                <li>
-                    <Link to="/orders">
-                        <img className="mr-15 cu-p" width={24} height={24} src="/img/user.png" alt="user" />
+
+                    <Link to="/about">
+                        <li className="mr-50 cu-p">
+                            <p>About</p>
+                        </li>
                     </Link>
-                </li>
-            </ul>
+                </ul>
+
+                <ul className="d-flex">
+                    <li onClick={props.onClickCart} className="mr-30 cu-p positioned">
+                        <img width={24} height={24} src="/img/shopping-cart.png" alt="cart" />
+                        <span className="totalPrice">{totalPrice}$</span>
+                    </li>
+                    <li className="ml-20">
+                        <Link to="/favorites">
+                            <img
+                                className="mr-15 cu-p"
+                                width={24}
+                                height={24}
+                                src="/img/favorite.png"
+                                alt="favorite"
+                            />
+                        </Link>
+                    </li>
+
+                    <li>
+                        <Link to="/orders">
+                            <img
+                                className="mr-15 cu-p"
+                                width={24}
+                                height={24}
+                                src="/img/user.png"
+                                alt="user"
+                            />
+                        </Link>
+                    </li>
+                </ul>
+            </div>
         </header>
     );
 }
