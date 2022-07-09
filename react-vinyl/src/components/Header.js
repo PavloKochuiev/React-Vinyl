@@ -10,7 +10,7 @@ function Header(props) {
         <header className="d-flex justify-between align-center p-40">
             <Link to="/">
                 <div className="d-flex align-center">
-                    <img width={40} height={40} src="/img/logo.png" alt="logo" />
+                    <img width={40} height={40} src="img/logo.png" alt="logo" />
                     <div>
                         <h3 className="text-uppercase">React Vinyl</h3>
                         <p className="opacity-5">your future collection</p>
@@ -35,7 +35,7 @@ function Header(props) {
 
                 <ul className="d-flex">
                     <li onClick={props.onClickCart} className="mr-30 cu-p positioned">
-                        <img width={24} height={24} src="/img/shopping-cart.png" alt="cart" />
+                        <img width={24} height={24} src="img/shopping-cart.png" alt="cart" />
                         <span className="totalPrice">{totalPrice}$</span>
                     </li>
                     <li className="ml-20">
@@ -44,7 +44,7 @@ function Header(props) {
                                 className="mr-15 cu-p"
                                 width={24}
                                 height={24}
-                                src="/img/favorite.png"
+                                src="img/favorite.png"
                                 alt="favorite"
                             />
                         </Link>
@@ -56,7 +56,7 @@ function Header(props) {
                                 className="mr-15 cu-p"
                                 width={24}
                                 height={24}
-                                src="/img/user.png"
+                                src="img/user.png"
                                 alt="user"
                             />
                         </Link>
