@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/React-Vinyl/static/css/main.dbd92a8e.css",
-    "main.js": "/React-Vinyl/static/js/main.855a818a.js",
+    "main.js": "/React-Vinyl/static/js/main.8ce226a3.js",
     "index.html": "/React-Vinyl/index.html",
     "main.dbd92a8e.css.map": "/React-Vinyl/static/css/main.dbd92a8e.css.map",
-    "main.855a818a.js.map": "/React-Vinyl/static/js/main.855a818a.js.map"
+    "main.8ce226a3.js.map": "/React-Vinyl/static/js/main.8ce226a3.js.map"
   },
   "entrypoints": [
     "static/css/main.dbd92a8e.css",
-    "static/js/main.855a818a.js"
+    "static/js/main.8ce226a3.js"
   ]
 }
